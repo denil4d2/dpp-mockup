@@ -2,39 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DPP Mockup</title>
   <style>
+    :root {
+      --bg: #f3f6f8;
+      --surface: #ffffff;
+      --text: #1d2a33;
+      --muted: #60707c;
+      --primary: #1f4f82;
+      --border: #d9e2e8;
+      --shadow: 0 8px 24px rgba(16, 37, 56, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      margin: 30px;
-      background: #f5f5f5;
-      color: #222;
+      background: linear-gradient(180deg, #eef3f6 0%, #f7f9fb 100%);
+      color: var(--text);
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 14px 40px;
     }
-    a.button {
-      display: inline-block;
-      margin: 8px 8px 8px 0;
-      padding: 10px 16px;
-      background: #1f6feb;
+
+    .hero {
+      background: linear-gradient(135deg, #1f4f82 0%, #2d6aa6 100%);
       color: white;
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .product-card {
+      display: block;
       text-decoration: none;
-      border-radius: 8px;
+      color: inherit;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(16, 37, 56, 0.12);
+    }
+
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .product-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      background: #f8fafb;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .product-text {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding: 12px 10px 24px;
+      }
+
+      .hero {
+        border-radius: 18px;
+        padding: 18px 16px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .product-card {
+        padding: 14px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>DPP Mockup</h1>
-    <p>Select a product:</p>
-<a class="button" href="./p1.html">Product 1</a>
-<a class="button" href="./p2.html">Product 2</a>
-<a class="button" href="./p3.html">Product 3</a>
+  <div class="page">
+    <section class="hero">
+      <h1>DPP Mockup</h1>
+      <p>
+        Mobile-friendly Digital Product Passport prototype with QR-based access to product-specific documents and information.
+      </p>
+    </section>
+
+    <section class="grid">
+      <a class="product-card" href="./p1.html">
+        <div class="product-top">
+          <div class="product-title">Rationel AURA 3-lags</div>
+          <div class="pill">Product 1</div>
+        </div>
+        <div class="product-text">
+          View the product passport prototype with linked DoP and EPD documents.
+        </div>
+      </a>
+
+      <a class="product-card" href="./p2.html">
+        <div class="product-top">
+          <div class="product-title">Rationel AURA 2-lags</div>
+          <div class="pill">Product 2</div>
+        </div>
+        <div class="product-text">
+          Open the DPP page for this product and access the associated documents.
+        </div>
+      </a>
+
+      <a class="product-card" href="./p3.html">
+        <div class="product-top">
+          <div class="product-title">Rationel FIX</div>
+          <div class="pill">Product 3</div>
+        </div>
+        <div class="product-text">
+          Browse product documentation through a simple passport-style interface.
+        </div>
+      </a>
+    </section>
   </div>
 </body>
 </html>

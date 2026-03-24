@@ -1,353 +1,447 @@
 <!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Digital Product Passport | VELFAC Ribo alu 3-lags</title>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Digital Product Passport | VELFAC Ribo alu 3-lags</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "secondary": "#48626e",
-              "surface-tint": "#1F4F82", // VELFAC Brand Color
-              "surface-container-highest": "#c9e7f7",
-              "error-container": "#ffdad6",
-              "on-primary-fixed": "#001c38",
-              "tertiary-container": "#00565e",
-              "primary-container": "#1F4F82", // VELFAC Brand Color
-              "tertiary": "#003d43",
-              "primary-fixed": "#d3e4ff",
-              "surface-container-lowest": "#ffffff",
-              "on-secondary-fixed": "#021f29",
-              "tertiary-fixed-dim": "#75d5e2",
-              "inverse-surface": "#163440",
-              "on-primary-container": "#ffffff",
-              "surface-variant": "#c9e7f7",
-              "background": "#f4faff",
-              "surface-dim": "#c0dfee",
-              "on-tertiary-fixed-variant": "#004f56",
-              "on-error": "#ffffff",
-              "on-surface-variant": "#42474f",
-              "outline-variant": "#c2c6d0",
-              "on-primary-fixed-variant": "#1F4F82",
-              "error": "#ba1a1a",
-              "surface-container-low": "#e6f6ff",
-              "on-background": "#001f2a",
-              "surface-container": "#d9f2ff",
-              "secondary-fixed": "#cbe7f5",
-              "on-secondary-container": "#4e6874",
-              "surface": "#f4faff",
-              "on-primary": "#ffffff",
-              "on-secondary-fixed-variant": "#304a55",
-              "surface-bright": "#f4faff",
-              "on-error-container": "#93000a",
-              "primary": "#1F4F82", // VELFAC Brand Color
-              "tertiary-fixed": "#92f1fe",
-              "surface-container-high": "#ceedfd",
-              "outline": "#737780",
-              "on-tertiary-fixed": "#001f23",
-              "on-secondary": "#ffffff",
-              "on-surface": "#001f2a",
-              "primary-fixed-dim": "#a2c9ff",
-              "inverse-primary": "#a2c9ff",
-              "secondary-container": "#cbe7f5",
-              "on-tertiary": "#ffffff",
-              "inverse-on-surface": "#e0f4ff",
-              "secondary-fixed-dim": "#afcbd8",
-              "on-tertiary-container": "#6ccdda"
-            },
-            fontFamily: {
-              "headline": ["Public Sans"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed-dim": "#afcbd8",
+            "on-secondary-container": "#4e6874",
+            "secondary-container": "#cbe7f5",
+            "secondary": "#48626e",
+            "on-tertiary-fixed-variant": "#004f56",
+            "outline": "#737780",
+            "on-primary-fixed-variant": "#15487b",
+            "surface-variant": "#c9e7f7",
+            "on-tertiary-fixed": "#001f23",
+            "tertiary-container": "#00565e",
+            "tertiary": "#003d43",
+            "primary-container": "#1f4f82",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#97c1fb",
+            "on-background": "#001f2a",
+            "surface-container": "#d9f2ff",
+            "on-tertiary-container": "#6ccdda",
+            "primary-fixed": "#d3e4ff",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#021f29",
+            "outline-variant": "#c2c6d0",
+            "surface-container-low": "#e6f6ff",
+            "surface-container-highest": "#c9e7f7",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#e0f4ff",
+            "surface-bright": "#f4faff",
+            "primary-fixed-dim": "#a2c9ff",
+            "inverse-surface": "#163440",
+            "tertiary-fixed-dim": "#75d5e2",
+            "surface-container-high": "#ceedfd",
+            "on-secondary-fixed-variant": "#304a55",
+            "on-error-container": "#93000a",
+            "surface-tint": "#336094",
+            "surface": "#f4faff",
+            "on-primary-fixed": "#001c38",
+            "on-surface-variant": "#42474f",
+            "primary": "#003866",
+            "inverse-primary": "#a2c9ff",
+            "tertiary-fixed": "#92f1fe",
+            "surface-dim": "#c0dfee",
+            "secondary-fixed": "#cbe7f5",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f4faff",
+            "on-surface": "#001f2a",
+            "on-primary": "#ffffff"
           },
-        },
+          fontFamily: {
+            "headline": ["Public Sans"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          }
+        }
       }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        .passport-texture {
-            background-image: radial-gradient(circle at 2px 2px, rgba(31, 79, 130, 0.05) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
-        .glass-header {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-    </style>
-<style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-    </style>
+    };
+  </script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-header {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
-<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen pb-24 md:pb-0">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
-<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-4">
-<button class="p-2 rounded-full hover:bg-sky-50 transition-colors active:scale-95 duration-200">
-<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
-</button>
-<div class="flex flex-col">
-<span class="text-xs font-bold tracking-widest text-primary uppercase opacity-60">Product Passport</span>
-<h1 class="font-['Public_Sans'] font-semibold tracking-tight text-primary text-lg leading-tight">VELFAC Ribo alu 3-lags</h1>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button class="p-2 rounded-full hover:bg-sky-50 transition-colors active:scale-95 duration-200">
-<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
-</button>
-</div>
-</div>
-</header>
-<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto passport-texture">
-<!-- Hero Section: Visual & Identity -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-<div class="lg:col-span-7 rounded-3xl overflow-hidden bg-surface-container-low aspect-[4/3] relative group">
-<img alt="Professional architectural photograph of a VELFAC Ribo alu window" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern architectural window close-up showing VELFAC Ribo alu triple glazing details and sleek aluminum-clad timber frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQkTMae9efupUOh2llOupvfGho-Uwbp13vLVLK9z3OEevE7Ba0UlXiAiQlTgIkc1sh2GbkMxKa6FqKz2v_dBemUNQwU5O-pyI2ISsEvBxC1XUyFYE9c4-pIrJU31A0DB4iAnsW-F4jApQBjBYfH1wioYCVdWa5oOmLgTu_vSvfKh2X7VqLE0pq3cB93iSKSfsqEVE_xdcWnFbZiCxXK4DhrkKDFfWHuB909wy_FlI1thniKDy9T5Id0yTBmZ3PRtIhXMu1RdiS7LQ5"/>
-<div class="absolute bottom-6 left-6 flex gap-2">
-<span class="px-4 py-2 bg-white/90 glass-header text-primary text-xs font-bold rounded-full shadow-sm">ID: VEL-RIBO-AL-2024</span>
-<span class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-full shadow-md flex items-center gap-2">
-<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
-                    AUTHENTICATED
-                </span>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col justify-center space-y-8">
-<div>
-<h2 class="font-headline font-black text-4xl lg:text-5xl text-primary leading-[1.1] mb-6 tracking-tight">
-                    Optimized Energy <br/><span class="text-secondary font-light">Efficiency.</span>
-</h2>
-<p class="text-on-surface-variant text-lg leading-relaxed font-light">
-                    The VELFAC Ribo alu 3-layer glazed window is engineered for high-performance building envelopes. It combines the warmth of internal timber with a durable external aluminum cladding, featuring advanced triple-glazing for exceptional thermal insulation.
-                </p>
-</div>
-<div class="p-6 bg-surface-container-lowest rounded-3xl border border-sky-100/50 shadow-sm">
-<div class="flex items-start gap-4">
-<div class="bg-tertiary-fixed p-3 rounded-2xl">
-<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="eco">eco</span>
-</div>
-<div>
-<p class="font-bold text-on-background mb-1">Sustainable Origin</p>
-<p class="text-sm text-on-surface-variant leading-snug">Constructed from FSC®-certified timber and recycled aluminum components, ensuring a low lifecycle carbon impact.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Technical Specification Bento Grid -->
-<section class="mb-16">
-<div class="flex items-baseline justify-between mb-8 border-b border-outline-variant/20 pb-4">
-<h3 class="font-headline font-bold text-2xl text-primary flex items-center gap-3">
-<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
-                Technical Specs
+
+<body class="bg-background text-on-background font-body min-h-screen pb-32">
+
+  <header class="fixed top-0 w-full z-50 bg-[#f4faff] dark:bg-[#001f2a] opacity-90 glass-header shadow-[0_12px_40px_rgba(0,31,42,0.08)]">
+    <div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-[#003866] dark:text-[#e6f6ff]" style="font-variation-settings: 'FILL' 1;">verified</span>
+        <span class="text-lg font-black text-[#003866] dark:text-[#e6f6ff] font-headline tracking-tight">Digital Product Passport</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="qrBtn" class="material-symbols-outlined text-[#001f2a] dark:text-[#c0dfee] opacity-70 hover:bg-[#e6f6ff] dark:hover:bg-[#1f4f82] transition-colors p-2 rounded-xl active:scale-95 transition-transform">qr_code_2</button>
+        <button id="shareBtn" class="material-symbols-outlined text-[#001f2a] dark:text-[#c0dfee] opacity-70 hover:bg-[#e6f6ff] dark:hover:bg-[#1f4f82] transition-colors p-2 rounded-xl active:scale-95 transition-transform">share</button>
+      </div>
+    </div>
+    <div class="bg-[#c0dfee] dark:bg-[#003866] h-[1px] opacity-15"></div>
+  </header>
+
+  <main class="pt-24 px-6 max-w-7xl mx-auto">
+    <section class="mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div class="lg:col-span-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Official Document</span>
+            <span class="text-on-surface-variant text-sm font-medium">Updated: ESPR 2024/3110</span>
+          </div>
+
+          <h1 class="text-primary font-headline font-extrabold text-5xl lg:text-7xl tracking-tighter mb-4">
+            VELFAC Ribo alu 3-lags
+          </h1>
+
+          <div class="flex flex-wrap gap-4 items-center">
+            <div class="bg-surface-container-low px-4 py-2 rounded-xl">
+              <p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">Passport Identifier</p>
+              <p class="font-mono text-primary font-bold">EU-DPP-1234-5678-VEL</p>
+            </div>
+            <div class="bg-surface-container-low px-4 py-2 rounded-xl">
+              <p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">GTIN / EAN</p>
+              <p class="font-mono text-primary font-bold">5700001234567</p>
+            </div>
+            <div class="bg-surface-container-low px-4 py-2 rounded-xl">
+              <p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">Batch ID</p>
+              <p class="font-mono text-primary font-bold">DK-2024-V08</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <div class="aspect-video bg-surface-container-highest rounded-2xl overflow-hidden relative shadow-lg">
+            <img
+              alt="Premium modern window frame"
+              class="object-cover w-full h-full"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd3kds5xOl4DelbyQmIf7f322ECcYGQxpYpA5VmVT1Iy-4uOtwB1PC64z15kIm1vmzTRMtjDPJYB6ARqMGsKwSee5N7YW5T5pO0v6Acnn6FKgx3ettSOLS8ZuiHgJrrKZ4dRB31IsliRcWeN5sqlcYC2CA0E7KsS79d0ULNma47QFQ9CY2mpK24Ie1Ccf8gz6xyGztvKA2w5M-p39LiK6VwLR7d0ncw3si2XKEeik9f4GSltXI5ISg2jRFQTlvigdehwZ-j0KmPxr_"
+            />
+            <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-primary">
+              Ribo Series
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+      <div class="md:col-span-2 lg:col-span-2 bg-surface-container-low rounded-3xl p-8 relative overflow-hidden">
+        <div class="flex justify-between items-start mb-12">
+          <div>
+            <h2 class="font-headline font-bold text-2xl text-primary mb-2">Regulatory Framework</h2>
+            <p class="text-on-surface-variant text-sm">EU 2024/3110 Ecodesign for Sustainable Products</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">gavel</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
+            <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            <span class="text-sm font-bold text-on-surface">REACH Compliant</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
+            <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            <span class="text-sm font-bold text-on-surface">RoHS Status: Pass</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
+            <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified</span>
+            <span class="text-sm font-bold text-on-surface">CE Certified</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
+            <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">eco</span>
+            <span class="text-sm font-bold text-on-surface">EPD Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-1 lg:col-span-1 bg-primary text-on-primary rounded-3xl p-8 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined mb-6 text-4xl">co2</span>
+          <h3 class="font-headline font-bold text-xl mb-1">Carbon Footprint</h3>
+          <p class="text-primary-fixed/70 text-xs mb-6">Global Warming Potential (GWP)</p>
+        </div>
+        <div>
+          <div class="text-5xl font-black font-headline tracking-tighter mb-2">24.8</div>
+          <div class="text-sm font-bold opacity-80 uppercase tracking-widest">kg CO2e / m²</div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <div class="flex justify-between items-center">
+            <span class="text-xs uppercase tracking-widest font-bold">Energy Class</span>
+            <span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-lg text-lg font-black">A+++</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-3 lg:col-span-1 bg-surface-container-high rounded-3xl p-8 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined mb-6 text-4xl text-primary">recycling</span>
+          <h3 class="font-headline font-bold text-xl text-primary mb-1">Circular Economy</h3>
+          <p class="text-on-surface-variant text-xs mb-6">End-of-life Performance</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-end">
+            <span class="text-on-surface font-bold">Recycling Rate</span>
+            <span class="text-3xl font-black text-primary">94%</span>
+          </div>
+          <div class="w-full bg-surface-container rounded-full h-2">
+            <div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
+          </div>
+          <div class="flex justify-between items-center pt-4">
+            <span class="text-xs font-bold text-on-surface-variant">Design Life</span>
+            <span class="text-on-surface font-black">45+ Years</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
+      <div class="lg:col-span-8 bg-surface-container-lowest rounded-3xl p-10">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary">settings_input_component</span>
+          </div>
+          <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Technical Performance</h2>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
+            <div class="mb-2 md:mb-0">
+              <h4 class="text-on-surface font-bold text-lg">Thermal Transmittance (U-value)</h4>
+              <p class="text-on-surface-variant text-xs">Standard unit measurement for thermal efficiency</p>
+            </div>
+            <div class="text-2xl font-black text-primary font-headline">0.74 <span class="text-xs font-medium">W/m²K</span></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
+            <div class="mb-2 md:mb-0">
+              <h4 class="text-on-surface font-bold text-lg">Solar Heat Gain (G-value)</h4>
+              <p class="text-on-surface-variant text-xs">Fraction of solar radiation admitted through window</p>
+            </div>
+            <div class="text-2xl font-black text-primary font-headline">0.53 <span class="text-xs font-medium">EN 410</span></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
+            <div class="mb-2 md:mb-0">
+              <h4 class="text-on-surface font-bold text-lg">Acoustic Insulation</h4>
+              <p class="text-on-surface-variant text-xs">Sound reduction performance</p>
+            </div>
+            <div class="text-2xl font-black text-primary font-headline">34 <span class="text-xs font-medium">dB (Rw)</span></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between py-4">
+            <div class="mb-2 md:mb-0">
+              <h4 class="text-on-surface font-bold text-lg">Air Permeability</h4>
+              <p class="text-on-surface-variant text-xs">Resistance to air leakage</p>
+            </div>
+            <div class="text-2xl font-black text-primary font-headline">Class 4 <span class="text-xs font-medium">EN 12207</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 space-y-6">
+        <section id="documents" class="bg-surface-container-low rounded-3xl p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-headline font-bold text-xl text-primary flex items-center gap-2">
+              <span class="material-symbols-outlined">description</span>
+              Documentation
             </h3>
-<span class="text-xs font-mono text-secondary opacity-60">v2.1.0 SPECIFICATION_SHEET</span>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-<!-- U-Value -->
-<div class="col-span-2 bg-surface-container-low p-6 rounded-3xl flex flex-col justify-between group hover:bg-primary transition-colors duration-300">
-<span class="text-xs font-bold text-secondary group-hover:text-primary-fixed-dim uppercase tracking-widest">U-value</span>
-<div class="mt-4">
-<span class="text-4xl font-black text-primary group-hover:text-white font-headline">0.76</span>
-<span class="text-sm font-medium text-secondary group-hover:text-primary-fixed ml-1">W/m²K</span>
-</div>
-</div>
-<!-- G-Value -->
-<div class="bg-surface-container-lowest p-6 rounded-3xl border border-sky-100 flex flex-col justify-between">
-<span class="text-xs font-bold text-secondary uppercase tracking-widest">G-value</span>
-<div class="mt-4">
-<span class="text-2xl font-black text-primary font-headline">0.51</span>
-</div>
-</div>
-<!-- LT-Value -->
-<div class="bg-surface-container-lowest p-6 rounded-3xl border border-sky-100 flex flex-col justify-between">
-<span class="text-xs font-bold text-secondary uppercase tracking-widest">LT-value</span>
-<div class="mt-4">
-<span class="text-2xl font-black text-primary font-headline">0.70</span>
-</div>
-</div>
-<!-- Sound Reduction -->
-<div class="col-span-2 bg-white p-6 rounded-3xl shadow-sm flex items-center justify-between">
-<div>
-<span class="text-xs font-bold text-secondary uppercase tracking-widest block mb-2">Acoustic Shield</span>
-<span class="text-3xl font-black text-primary font-headline">35 <span class="text-lg font-medium opacity-50">dB</span></span>
-</div>
-<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="volume_down">volume_down</span>
-</div>
-<!-- Material -->
-<div class="col-span-2 lg:col-span-3 bg-surface-container-high p-6 rounded-3xl flex items-center gap-6">
-<div class="bg-white p-4 rounded-2xl shadow-inner">
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="foundation">foundation</span>
-</div>
-<div>
-<span class="text-xs font-bold text-secondary uppercase tracking-widest block">Primary Materials</span>
-<p class="text-xl font-bold text-on-background">FSC Timber / Aluminum</p>
-</div>
-</div>
-<!-- Glazing -->
-<div class="col-span-2 lg:col-span-3 bg-primary-container p-6 rounded-3xl flex items-center gap-6 text-white">
-<div class="bg-white/10 p-4 rounded-2xl backdrop-blur-md">
-<span class="material-symbols-outlined text-white text-3xl" data-icon="layers">layers</span>
-</div>
-<div>
-<span class="text-xs font-bold text-white/60 uppercase tracking-widest block">Glazing Structure</span>
-<p class="text-xl font-bold">3-layer, Low-E Coating</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Sustainability & Certifications -->
-<section class="mb-12">
-<h3 class="font-headline font-bold text-2xl text-primary mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
-            Sustainability &amp; Certifications
-        </h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- EPD Card -->
-<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 group">
-<div class="flex justify-between items-start mb-6">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 bg-tertiary-fixed rounded-2xl flex items-center justify-center">
-<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl" data-icon="description">description</span>
-</div>
-<div>
-<h4 class="font-bold text-xl text-primary">EPD</h4>
-<p class="text-xs font-medium text-on-surface-variant uppercase tracking-tighter">Environmental Product Declaration</p>
-</div>
-</div>
-<span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-black rounded-full border border-green-100">ACTIVE</span>
-</div>
-<div class="aspect-video bg-surface-dim rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
-<div class="w-full h-full bg-white rounded shadow-2xl p-4 flex flex-col gap-2">
-<div class="h-2 w-1/2 bg-slate-200 rounded"></div>
-<div class="h-2 w-full bg-slate-100 rounded"></div>
-<div class="h-2 w-full bg-slate-100 rounded"></div>
-<div class="h-32 w-full bg-slate-50 rounded mt-2 border-2 border-dashed border-slate-200 flex items-center justify-center">
-<span class="text-[10px] font-bold text-slate-300">DOCUMENT PREVIEW</span>
-</div>
-</div>
-<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-<button class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all">
-<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
-                            View Document
-                        </button>
-</div>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Verified environmental impact data specific to the VELFAC Ribo alu product line, covering GWP and life cycle analysis.</p>
-<button class="w-full py-4 border-2 border-primary/10 rounded-2xl text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-<span class="material-symbols-outlined" data-icon="download">download</span>
-                    Download PDF (2.8 MB)
-                </button>
-</div>
-<!-- DoP Card -->
-<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 group">
-<div class="flex justify-between items-start mb-6">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 bg-secondary-fixed rounded-2xl flex items-center justify-center">
-<span class="material-symbols-outlined text-on-secondary-fixed text-3xl" data-icon="contract">contract</span>
-</div>
-<div>
-<h4 class="font-bold text-xl text-primary">DoP</h4>
-<p class="text-xs font-medium text-on-surface-variant uppercase tracking-tighter">Declaration of Performance</p>
-</div>
-</div>
-<span class="px-3 py-1 bg-sky-50 text-sky-700 text-[10px] font-black rounded-full border border-sky-100">VERIFIED</span>
-</div>
-<div class="aspect-video bg-surface-dim rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
-<div class="w-full h-full bg-white rounded shadow-2xl p-4 flex flex-col gap-2">
-<div class="h-4 w-4 bg-primary/20 rounded-full mb-2"></div>
-<div class="h-2 w-3/4 bg-slate-200 rounded"></div>
-<div class="grid grid-cols-2 gap-2 mt-2">
-<div class="h-10 bg-slate-50 rounded"></div>
-<div class="h-10 bg-slate-50 rounded"></div>
-</div>
-<div class="h-2 w-1/2 bg-slate-100 rounded mt-auto"></div>
-</div>
-<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-<button class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all">
-<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
-                            View Document
-                        </button>
-</div>
-</div>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">CE-marked compliance statement for the Ribo alu series, fulfilling all European architectural and energy directives.</p>
-<button class="w-full py-4 border-2 border-primary/10 rounded-2xl text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-<span class="material-symbols-outlined" data-icon="download">download</span>
-                    Download PDF (1.4 MB)
-                </button>
-</div>
-</div>
-</section>
-<!-- Product Lifecycle / Circularity Section -->
-<section class="bg-on-background rounded-[3rem] p-10 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 p-8 opacity-10">
-<span class="material-symbols-outlined text-[180px]" data-icon="cycle">cycle</span>
-</div>
-<div class="relative z-10 max-w-2xl">
-<h3 class="font-headline font-black text-3xl mb-4 tracking-tight">Circular Economy Data</h3>
-<p class="text-white/70 mb-8 leading-relaxed">VELFAC Ribo alu components are designed for high material recovery. Aluminum cladding is easily separated for infinite recycling, while the timber core maintains a carbon-neutral footprint over its extended lifetime.</p>
-<div class="flex flex-wrap gap-4">
-<div class="px-5 py-3 bg-white/10 rounded-2xl backdrop-blur-md flex items-center gap-3">
-<span class="text-primary-fixed font-bold">94%</span>
-<span class="text-xs uppercase tracking-widest text-white/60">Recyclability Rate</span>
-</div>
-<div class="px-5 py-3 bg-white/10 rounded-2xl backdrop-blur-md flex items-center gap-3">
-<span class="text-primary-fixed font-bold">45+ Yrs</span>
-<span class="text-xs uppercase tracking-widest text-white/60">Expected Life</span>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full rounded-t-3xl mt-12 bg-slate-50 dark:bg-slate-900">
-<div class="flex flex-col items-center gap-6 px-8 py-12 w-full max-w-7xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50">
-<div class="font-['Public_Sans'] font-black text-primary dark:text-sky-100 text-2xl tracking-tighter">
-            VELFAC<span class="font-light text-secondary">DPP</span>
-</div>
-<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
-<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Sustainability Report</a>
-<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Technical Support</a>
-<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Privacy Policy</a>
-</div>
-<p class="font-['Inter'] text-xs text-slate-500 dark:text-slate-400 opacity-60">
-            © 2024 VELFAC Windows. Digital Product Passport. All technical values are certified under EN 14351-1.
-        </p>
-</div>
-</footer>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-slate-950 shadow-[0_-4px_20px_rgba(31,79,130,0.05)] border-t border-slate-100 dark:border-slate-800 z-50">
-<a class="flex flex-col items-center justify-center bg-sky-50 dark:bg-sky-900/40 text-primary dark:text-sky-100 rounded-xl px-3 py-1.5 active:translate-y-0.5 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="window" style="font-variation-settings: 'FILL' 1;">window</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Product</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Specs</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="description">description</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Docs</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="eco">eco</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Sustainability</span>
-</a>
-</nav>
-</body></html>
+            <span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">3 files</span>
+          </div>
+
+          <div class="flex flex-col gap-3">
+
+            <!-- Replace the href values below with your exact p2.html document paths -->
+
+            <a href="./documents/declaration-of-performance.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group border border-transparent hover:border-primary/10">
+              <div class="flex items-center gap-3 min-w-0">
+                <span class="material-symbols-outlined text-primary/70 shrink-0">picture_as_pdf</span>
+                <div class="min-w-0">
+                  <span class="block text-sm font-bold text-on-surface truncate">Declaration of Performance</span>
+                  <span class="block text-xs text-on-surface-variant">Open PDF</span>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform shrink-0">arrow_forward</span>
+            </a>
+
+            <a href="./documents/epd-document-v2-1.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group border border-transparent hover:border-primary/10">
+              <div class="flex items-center gap-3 min-w-0">
+                <span class="material-symbols-outlined text-primary/70 shrink-0">eco</span>
+                <div class="min-w-0">
+                  <span class="block text-sm font-bold text-on-surface truncate">EPD Document (v2.1)</span>
+                  <span class="block text-xs text-on-surface-variant">Open environmental declaration</span>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform shrink-0">arrow_forward</span>
+            </a>
+
+            <a href="./documents/installation-manual.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group border border-transparent hover:border-primary/10">
+              <div class="flex items-center gap-3 min-w-0">
+                <span class="material-symbols-outlined text-primary/70 shrink-0">menu_book</span>
+                <div class="min-w-0">
+                  <span class="block text-sm font-bold text-on-surface truncate">Installation Manual</span>
+                  <span class="block text-xs text-on-surface-variant">Open installation guide</span>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform shrink-0">arrow_forward</span>
+            </a>
+
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-outline-variant/20 flex gap-3">
+            <a href="./documents/declaration-of-performance.pdf"
+               download
+               class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-primary text-on-primary text-sm font-bold hover:opacity-90 transition">
+              <span class="material-symbols-outlined text-base">download</span>
+              Download DoP
+            </a>
+
+            <a href="./documents/epd-document-v2-1.pdf"
+               download
+               class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white text-primary text-sm font-bold border border-primary/10 hover:bg-surface-container-lowest transition">
+              <span class="material-symbols-outlined text-base">download</span>
+              Download EPD
+            </a>
+          </div>
+        </section>
+
+        <div class="bg-[#1f4f82] text-white rounded-3xl p-8 shadow-[0_20px_40px_rgba(31,79,130,0.25)]">
+          <h3 class="font-headline font-bold text-xl mb-4">Sustainability Alert</h3>
+          <p class="text-primary-fixed/80 text-sm mb-6 leading-relaxed">
+            This product exceeds EU 2024/3110 sustainability thresholds by 12.5%. Eligible for green building certifications (LEED/BREEAM).
+          </p>
+          <a href="./documents/life-cycle-analysis.pdf"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="w-full inline-flex justify-center items-center py-4 bg-white text-primary font-bold rounded-xl hover:bg-primary-fixed transition-colors active:scale-95 duration-200">
+            View Life Cycle Analysis
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="bg-surface-dim/40 rounded-3xl p-10 mb-12 border-l-8 border-tertiary">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-20 h-20 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-on-tertiary-fixed text-4xl">restore_from_trash</span>
+        </div>
+        <div>
+          <h2 class="font-headline font-bold text-2xl text-primary mb-2">Circular Disassembly Instructions</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-4 max-w-3xl">
+            This window is engineered for mechanical disassembly. Components (Glass, Aluminum, Timber) can be separated using standard T10/T15 tools without destructive force, ensuring a 94% material recovery rate at end-of-life.
+          </p>
+          <div class="flex gap-4 flex-wrap">
+            <a href="./documents/disassembly-guide.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-primary font-bold text-sm underline-offset-4 hover:underline flex items-center gap-1">
+              Download Disassembly Guide
+              <span class="material-symbols-outlined text-sm">download</span>
+            </a>
+
+            <a href="https://www.google.com/maps/search/recycling+center"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-primary font-bold text-sm underline-offset-4 hover:underline flex items-center gap-1">
+              Locate Recycling Center
+              <span class="material-symbols-outlined text-sm">map</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="fixed bottom-0 left-0 w-full bg-[#ffffff] dark:bg-[#001f2a] shadow-[0_-4px_20px_rgba(0,31,42,0.05)] border-t border-[#c0dfee]/20 z-50">
+    <div class="max-w-7xl mx-auto flex justify-around items-center px-4 pb-6 pt-3">
+      <a class="flex flex-col items-center justify-center text-[#003866] dark:text-[#92f1fe] bg-[#e6f6ff] dark:bg-[#1f4f82] rounded-xl px-4 py-2 transition-all active:scale-90 duration-200" href="#">
+        <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">window</span>
+        <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Product</span>
+      </a>
+
+      <a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+        <span class="material-symbols-outlined mb-1">gavel</span>
+        <span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Compliance</span>
+      </a>
+
+      <a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#documents">
+        <span class="material-symbols-outlined mb-1">description</span>
+        <span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Documents</span>
+      </a>
+
+      <a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+        <span class="material-symbols-outlined mb-1">recycling</span>
+        <span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Circular</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.getElementById("shareBtn")?.addEventListener("click", async () => {
+      const shareData = {
+        title: document.title,
+        text: "Digital Product Passport – VELFAC Ribo alu 3-lags",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          alert("Link copied to clipboard.");
+        }
+      } catch (err) {
+        console.log("Share cancelled or failed.", err);
+      }
+    });
+
+    document.getElementById("qrBtn")?.addEventListener("click", () => {
+      alert("Hook this button to your QR modal or QR image page.");
+    });
+  </script>
+</body>
+</html>

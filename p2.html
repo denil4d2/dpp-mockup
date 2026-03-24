@@ -1,693 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DPP - VELFAC Ribo alu 3-lags</title>
-  <style>
-    :root {
-      --bg: #f1f5f7;
-      --surface: #ffffff;
-      --surface-soft: #f7fafb;
-      --text: #18303f;
-      --muted: #5f7380;
-      --primary: #163e63;
-      --primary-2: #245784;
-      --primary-dark: #102e49;
-      --border: #d2dbe1;
-      --border-strong: #bcc9d2;
-      --shadow-sm: 0 6px 20px rgba(18, 41, 61, 0.06);
-      --shadow-md: 0 14px 34px rgba(18, 41, 61, 0.10);
-      --radius-lg: 28px;
-      --radius-md: 18px;
-      --radius-sm: 14px;
-      --maxw: 1140px;
-    }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(36, 87, 132, 0.08), transparent 28%),
-        linear-gradient(180deg, #eef3f6 0%, var(--bg) 100%);
-      color: var(--text);
-    }
-
-    a,
-    button,
-    .card,
-    .doc-btn,
-    .info-block,
-    .data-row {
-      transition: all 0.2s ease;
-    }
-
-    .page {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 20px 16px 48px;
-    }
-
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 14px;
-      padding: 10px 14px;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 14px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(210, 219, 225, 0.92);
-      border-radius: 999px;
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .top-nav:hover {
-      color: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #163e63 0%, #245784 58%, #3a78aa 100%);
-      color: white;
-      border-radius: var(--radius-lg);
-      padding: 30px 24px 24px;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 18px;
-      isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: -60px;
-      top: -60px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      z-index: -1;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 120px;
-      bottom: -70px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      z-index: -1;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 12px;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      opacity: 0.84;
-      margin-bottom: 10px;
-    }
-
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: 34px;
-      line-height: 1.02;
-      max-width: 720px;
-    }
-
-    .hero p {
-      margin: 0;
-      color: rgba(255,255,255,0.9);
-      font-size: 15px;
-      line-height: 1.6;
-      max-width: 720px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.20);
-      padding: 11px 15px;
-      border-radius: 999px;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .metric {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 16px;
-      padding: 14px;
-      backdrop-filter: blur(4px);
-    }
-
-    .metric-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.76);
-      margin-bottom: 6px;
-    }
-
-    .metric-value {
-      font-size: 18px;
-      font-weight: 700;
-      color: white;
-      line-height: 1.2;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      margin-bottom: 18px;
-      align-items: start;
-    }
-
-    .stack {
-      display: grid;
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      padding: 22px;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(18, 41, 61, 0.08);
-    }
-
-    .card h2 {
-      margin: 0 0 16px;
-      font-size: 19px;
-      line-height: 1.2;
-      color: var(--primary-dark);
-    }
-
-    .subtle {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .meta-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .meta-item {
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px;
-    }
-
-    .meta-item:hover {
-      border-color: var(--border-strong);
-      background: #fbfcfd;
-    }
-
-    .meta-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
-
-    .meta-value {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .status-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      background: #f7fafb;
-      color: var(--primary-dark);
-    }
-
-    .doc-buttons {
-      display: grid;
-      gap: 12px;
-    }
-
-    .doc-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      text-decoration: none;
-      color: inherit;
-      background: linear-gradient(180deg, #f9fbfc 0%, #f5f8fa 100%);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-    }
-
-    .doc-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-strong);
-      box-shadow: 0 14px 26px rgba(18, 41, 61, 0.08);
-      background: linear-gradient(180deg, #fbfdfe 0%, #f6fafc 100%);
-    }
-
-    .doc-btn-main {
-      min-width: 0;
-    }
-
-    .doc-btn-title {
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--primary);
-      font-size: 16px;
-      line-height: 1.3;
-    }
-
-    .doc-btn-text {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .doc-btn-arrow {
-      flex-shrink: 0;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(22, 62, 99, 0.08);
-      color: var(--primary);
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .info-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      padding: 22px;
-    }
-
-    .info-block:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(18, 41, 61, 0.08);
-    }
-
-    .info-block h3 {
-      margin: 0 0 14px;
-      font-size: 17px;
-      color: var(--primary-dark);
-    }
-
-    .data-table {
-      display: grid;
-      gap: 10px;
-    }
-
-    .data-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 12px 0;
-      border-bottom: 1px solid #edf2f5;
-    }
-
-    .data-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .data-key {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .data-value {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
-    .highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-      padding: 10px 12px;
-      background: #f5f9fc;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .footer-note {
-      margin-top: 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 980px) {
-      .layout,
-      .section-grid {
-        grid-template-columns: 1fr;
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Product Passport | VELFAC Ribo alu 3-lags</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#48626e",
+              "surface-tint": "#1F4F82", // VELFAC Brand Color
+              "surface-container-highest": "#c9e7f7",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#001c38",
+              "tertiary-container": "#00565e",
+              "primary-container": "#1F4F82", // VELFAC Brand Color
+              "tertiary": "#003d43",
+              "primary-fixed": "#d3e4ff",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#021f29",
+              "tertiary-fixed-dim": "#75d5e2",
+              "inverse-surface": "#163440",
+              "on-primary-container": "#ffffff",
+              "surface-variant": "#c9e7f7",
+              "background": "#f4faff",
+              "surface-dim": "#c0dfee",
+              "on-tertiary-fixed-variant": "#004f56",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#42474f",
+              "outline-variant": "#c2c6d0",
+              "on-primary-fixed-variant": "#1F4F82",
+              "error": "#ba1a1a",
+              "surface-container-low": "#e6f6ff",
+              "on-background": "#001f2a",
+              "surface-container": "#d9f2ff",
+              "secondary-fixed": "#cbe7f5",
+              "on-secondary-container": "#4e6874",
+              "surface": "#f4faff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#304a55",
+              "surface-bright": "#f4faff",
+              "on-error-container": "#93000a",
+              "primary": "#1F4F82", // VELFAC Brand Color
+              "tertiary-fixed": "#92f1fe",
+              "surface-container-high": "#ceedfd",
+              "outline": "#737780",
+              "on-tertiary-fixed": "#001f23",
+              "on-secondary": "#ffffff",
+              "on-surface": "#001f2a",
+              "primary-fixed-dim": "#a2c9ff",
+              "inverse-primary": "#a2c9ff",
+              "secondary-container": "#cbe7f5",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#e0f4ff",
+              "secondary-fixed-dim": "#afcbd8",
+              "on-tertiary-container": "#6ccdda"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
       }
-
-      .metrics {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        padding: 12px 10px 32px;
-      }
-
-      .hero {
-        border-radius: 22px;
-        padding: 22px 16px 18px;
-      }
-
-      .hero h1 {
-        font-size: 24px;
-      }
-
-      .metrics,
-      .meta-list {
-        grid-template-columns: 1fr;
-      }
-
-      .card,
-      .info-block {
-        padding: 16px;
-      }
-
-      .doc-btn {
-        padding: 16px;
-      }
-
-      .data-row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .top-nav {
-        font-size: 13px;
-        padding: 9px 12px;
-      }
-    }
-  </style>
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .passport-texture {
+            background-image: radial-gradient(circle at 2px 2px, rgba(31, 79, 130, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
 </head>
-<body>
-  <div class="page">
-    <a class="top-nav" href="./index.html">← Back to products</a>
-
-    <section class="hero">
-      <div class="hero-top">
-        <div>
-          <div class="brand">Digital Product Passport · VELFAC</div>
-          <h1>VELFAC Ribo alu 3-lags</h1>
-          <p>
-            A slim-profile aluminium-clad window solution designed for a clean architectural expression,
-            robust exterior durability, and high daylight performance. This product combines a refined
-            frame design with modern thermal performance and documented product information for easier
-            specification, review, and lifecycle communication.
-          </p>
-        </div>
-        <div class="tag">DoP + EPD available</div>
-      </div>
-
-      <div class="metrics">
-        <div class="metric">
-          <div class="metric-label">Brand</div>
-          <div class="metric-value">VELFAC</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Product line</div>
-          <div class="metric-value">Ribo Alu</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Configuration</div>
-          <div class="metric-value">3-layer glazing</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">Document status</div>
-          <div class="metric-value">Available</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="layout">
-      <div class="stack">
-        <div class="card">
-          <h2>Product summary</h2>
-          <div class="meta-list">
-            <div class="meta-item">
-              <div class="meta-label">Brand</div>
-              <div class="meta-value">VELFAC</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label">Product line</div>
-              <div class="meta-value">Ribo Alu</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label">Construction</div>
-              <div class="meta-value">Aluminium-clad window system</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label">Glazing</div>
-              <div class="meta-value">3-layer glazing</div>
-            </div>
-          </div>
-
-          <div class="status-row">
-            <div class="status-pill">Performance documented</div>
-            <div class="status-pill">Environmental data available</div>
-            <div class="status-pill">Downloadable source documents</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Product description</h2>
-          <div class="subtle">
-            VELFAC Ribo Alu 3-lags is presented as a window solution intended for projects where a narrow
-            visual frame, durable external finish, and strong energy performance matter. The aluminium-clad
-            exterior supports weather resistance and lower maintenance on the outside, while the overall
-            configuration is positioned toward modern building envelopes that require improved thermal
-            performance through triple glazing.
-            <br><br>
-            This page is structured to surface the most relevant product information directly on the screen:
-            core identification, indicative performance data, environmental references, and access to the
-            full supporting documentation.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Source documents</h2>
-        <div class="doc-buttons">
-          <a class="doc-btn" href="./files/product2_dop.pdf" target="_blank" rel="noopener noreferrer" download>
-            <div class="doc-btn-main">
-              <div class="doc-btn-title">Declaration of Performance</div>
-              <div class="doc-btn-text">
-                Download or open the full DoP document with detailed declared performance data.
-              </div>
-            </div>
-            <div class="doc-btn-arrow">↓</div>
-          </a>
-
-          <a class="doc-btn" href="./files/product2_epd.pdf" target="_blank" rel="noopener noreferrer" download>
-            <div class="doc-btn-main">
-              <div class="doc-btn-title">Environmental Product Declaration</div>
-              <div class="doc-btn-text">
-                Download or open the full EPD document with environmental impact information.
-              </div>
-            </div>
-            <div class="doc-btn-arrow">↓</div>
-          </a>
-        </div>
-
-        <div class="highlight">Best setup: show key values here, keep PDFs as evidence files</div>
-      </div>
-    </section>
-
-    <section class="section-grid">
-      <div class="info-block">
-        <h3>Key product data</h3>
-        <div class="data-table">
-          <div class="data-row">
-            <div class="data-key">Product name</div>
-            <div class="data-value">VELFAC Ribo alu 3-lags</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Category</div>
-            <div class="data-value">Window</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Brand</div>
-            <div class="data-value">VELFAC</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Series</div>
-            <div class="data-value">Ribo Alu</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Configuration</div>
-            <div class="data-value">Triple glazed / 3-layer glazing</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Outer material</div>
-            <div class="data-value">Aluminium cladding</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Use case</div>
-            <div class="data-value">Residential and commercial façade applications where daylight, durability, and thermal performance are relevant.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <h3>Performance overview</h3>
-        <div class="data-table">
-          <div class="data-row">
-            <div class="data-key">Thermal concept</div>
-            <div class="data-value">3-layer glazing supports improved insulation compared with lower-glazed configurations.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Daylight profile</div>
-            <div class="data-value">Slim frame concept intended to support a cleaner glazed appearance and stronger daylight admission.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Maintenance</div>
-            <div class="data-value">Exterior aluminium finish supports durability and reduced exterior maintenance demands.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Documentation</div>
-            <div class="data-value">Detailed declared values should be confirmed in the downloadable DoP and EPD files.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <h3>Environmental information</h3>
-        <div class="data-table">
-          <div class="data-row">
-            <div class="data-key">EPD status</div>
-            <div class="data-value">Available</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Environmental scope</div>
-            <div class="data-value">Environmental impacts are documented in the Environmental Product Declaration linked above.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Use in DPP</div>
-            <div class="data-value">EPD information can support sustainability communication, project documentation, and product comparison workflows.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Recommended display</div>
-            <div class="data-value">Surface a few headline values here, then let users open the full EPD for the complete methodology and indicators.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="info-block">
-        <h3>Compliance & document references</h3>
-        <div class="data-table">
-          <div class="data-row">
-            <div class="data-key">DoP status</div>
-            <div class="data-value">Available</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Declared performance</div>
-            <div class="data-value">The Declaration of Performance should remain the formal source for certified or declared product performance values.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">User action</div>
-            <div class="data-value">Users can review this page for a quick overview, then download the source documents for formal evidence and full details.</div>
-          </div>
-          <div class="data-row">
-            <div class="data-key">Presentation logic</div>
-            <div class="data-value">On-page summary first. Formal PDF evidence second.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer-note">
-      Replace the summary values above with the exact figures and wording from your real DoP and EPD when you are ready.
-    </div>
-  </div>
-</body>
-</html>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-sky-50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-xs font-bold tracking-widest text-primary uppercase opacity-60">Product Passport</span>
+<h1 class="font-['Public_Sans'] font-semibold tracking-tight text-primary text-lg leading-tight">VELFAC Ribo alu 3-lags</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-sky-50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto passport-texture">
+<!-- Hero Section: Visual & Identity -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-7 rounded-3xl overflow-hidden bg-surface-container-low aspect-[4/3] relative group">
+<img alt="Professional architectural photograph of a VELFAC Ribo alu window" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern architectural window close-up showing VELFAC Ribo alu triple glazing details and sleek aluminum-clad timber frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQkTMae9efupUOh2llOupvfGho-Uwbp13vLVLK9z3OEevE7Ba0UlXiAiQlTgIkc1sh2GbkMxKa6FqKz2v_dBemUNQwU5O-pyI2ISsEvBxC1XUyFYE9c4-pIrJU31A0DB4iAnsW-F4jApQBjBYfH1wioYCVdWa5oOmLgTu_vSvfKh2X7VqLE0pq3cB93iSKSfsqEVE_xdcWnFbZiCxXK4DhrkKDFfWHuB909wy_FlI1thniKDy9T5Id0yTBmZ3PRtIhXMu1RdiS7LQ5"/>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="px-4 py-2 bg-white/90 glass-header text-primary text-xs font-bold rounded-full shadow-sm">ID: VEL-RIBO-AL-2024</span>
+<span class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-full shadow-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AUTHENTICATED
+                </span>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col justify-center space-y-8">
+<div>
+<h2 class="font-headline font-black text-4xl lg:text-5xl text-primary leading-[1.1] mb-6 tracking-tight">
+                    Optimized Energy <br/><span class="text-secondary font-light">Efficiency.</span>
+</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed font-light">
+                    The VELFAC Ribo alu 3-layer glazed window is engineered for high-performance building envelopes. It combines the warmth of internal timber with a durable external aluminum cladding, featuring advanced triple-glazing for exceptional thermal insulation.
+                </p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-3xl border border-sky-100/50 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="bg-tertiary-fixed p-3 rounded-2xl">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="eco">eco</span>
+</div>
+<div>
+<p class="font-bold text-on-background mb-1">Sustainable Origin</p>
+<p class="text-sm text-on-surface-variant leading-snug">Constructed from FSC®-certified timber and recycled aluminum components, ensuring a low lifecycle carbon impact.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specification Bento Grid -->
+<section class="mb-16">
+<div class="flex items-baseline justify-between mb-8 border-b border-outline-variant/20 pb-4">
+<h3 class="font-headline font-bold text-2xl text-primary flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+                Technical Specs
+            </h3>
+<span class="text-xs font-mono text-secondary opacity-60">v2.1.0 SPECIFICATION_SHEET</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<!-- U-Value -->
+<div class="col-span-2 bg-surface-container-low p-6 rounded-3xl flex flex-col justify-between group hover:bg-primary transition-colors duration-300">
+<span class="text-xs font-bold text-secondary group-hover:text-primary-fixed-dim uppercase tracking-widest">U-value</span>
+<div class="mt-4">
+<span class="text-4xl font-black text-primary group-hover:text-white font-headline">0.76</span>
+<span class="text-sm font-medium text-secondary group-hover:text-primary-fixed ml-1">W/m²K</span>
+</div>
+</div>
+<!-- G-Value -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl border border-sky-100 flex flex-col justify-between">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">G-value</span>
+<div class="mt-4">
+<span class="text-2xl font-black text-primary font-headline">0.51</span>
+</div>
+</div>
+<!-- LT-Value -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl border border-sky-100 flex flex-col justify-between">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">LT-value</span>
+<div class="mt-4">
+<span class="text-2xl font-black text-primary font-headline">0.70</span>
+</div>
+</div>
+<!-- Sound Reduction -->
+<div class="col-span-2 bg-white p-6 rounded-3xl shadow-sm flex items-center justify-between">
+<div>
+<span class="text-xs font-bold text-secondary uppercase tracking-widest block mb-2">Acoustic Shield</span>
+<span class="text-3xl font-black text-primary font-headline">35 <span class="text-lg font-medium opacity-50">dB</span></span>
+</div>
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="volume_down">volume_down</span>
+</div>
+<!-- Material -->
+<div class="col-span-2 lg:col-span-3 bg-surface-container-high p-6 rounded-3xl flex items-center gap-6">
+<div class="bg-white p-4 rounded-2xl shadow-inner">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="foundation">foundation</span>
+</div>
+<div>
+<span class="text-xs font-bold text-secondary uppercase tracking-widest block">Primary Materials</span>
+<p class="text-xl font-bold text-on-background">FSC Timber / Aluminum</p>
+</div>
+</div>
+<!-- Glazing -->
+<div class="col-span-2 lg:col-span-3 bg-primary-container p-6 rounded-3xl flex items-center gap-6 text-white">
+<div class="bg-white/10 p-4 rounded-2xl backdrop-blur-md">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="layers">layers</span>
+</div>
+<div>
+<span class="text-xs font-bold text-white/60 uppercase tracking-widest block">Glazing Structure</span>
+<p class="text-xl font-bold">3-layer, Low-E Coating</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sustainability & Certifications -->
+<section class="mb-12">
+<h3 class="font-headline font-bold text-2xl text-primary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+            Sustainability &amp; Certifications
+        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- EPD Card -->
+<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-primary">EPD</h4>
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-tighter">Environmental Product Declaration</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-black rounded-full border border-green-100">ACTIVE</span>
+</div>
+<div class="aspect-video bg-surface-dim rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
+<div class="w-full h-full bg-white rounded shadow-2xl p-4 flex flex-col gap-2">
+<div class="h-2 w-1/2 bg-slate-200 rounded"></div>
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-32 w-full bg-slate-50 rounded mt-2 border-2 border-dashed border-slate-200 flex items-center justify-center">
+<span class="text-[10px] font-bold text-slate-300">DOCUMENT PREVIEW</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+<button class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+                            View Document
+                        </button>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Verified environmental impact data specific to the VELFAC Ribo alu product line, covering GWP and life cycle analysis.</p>
+<button class="w-full py-4 border-2 border-primary/10 rounded-2xl text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                    Download PDF (2.8 MB)
+                </button>
+</div>
+<!-- DoP Card -->
+<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-secondary-fixed rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed text-3xl" data-icon="contract">contract</span>
+</div>
+<div>
+<h4 class="font-bold text-xl text-primary">DoP</h4>
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-tighter">Declaration of Performance</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-sky-50 text-sky-700 text-[10px] font-black rounded-full border border-sky-100">VERIFIED</span>
+</div>
+<div class="aspect-video bg-surface-dim rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
+<div class="w-full h-full bg-white rounded shadow-2xl p-4 flex flex-col gap-2">
+<div class="h-4 w-4 bg-primary/20 rounded-full mb-2"></div>
+<div class="h-2 w-3/4 bg-slate-200 rounded"></div>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="h-10 bg-slate-50 rounded"></div>
+<div class="h-10 bg-slate-50 rounded"></div>
+</div>
+<div class="h-2 w-1/2 bg-slate-100 rounded mt-auto"></div>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+<button class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+                            View Document
+                        </button>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">CE-marked compliance statement for the Ribo alu series, fulfilling all European architectural and energy directives.</p>
+<button class="w-full py-4 border-2 border-primary/10 rounded-2xl text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                    Download PDF (1.4 MB)
+                </button>
+</div>
+</div>
+</section>
+<!-- Product Lifecycle / Circularity Section -->
+<section class="bg-on-background rounded-[3rem] p-10 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[180px]" data-icon="cycle">cycle</span>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h3 class="font-headline font-black text-3xl mb-4 tracking-tight">Circular Economy Data</h3>
+<p class="text-white/70 mb-8 leading-relaxed">VELFAC Ribo alu components are designed for high material recovery. Aluminum cladding is easily separated for infinite recycling, while the timber core maintains a carbon-neutral footprint over its extended lifetime.</p>
+<div class="flex flex-wrap gap-4">
+<div class="px-5 py-3 bg-white/10 rounded-2xl backdrop-blur-md flex items-center gap-3">
+<span class="text-primary-fixed font-bold">94%</span>
+<span class="text-xs uppercase tracking-widest text-white/60">Recyclability Rate</span>
+</div>
+<div class="px-5 py-3 bg-white/10 rounded-2xl backdrop-blur-md flex items-center gap-3">
+<span class="text-primary-fixed font-bold">45+ Yrs</span>
+<span class="text-xs uppercase tracking-widest text-white/60">Expected Life</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-3xl mt-12 bg-slate-50 dark:bg-slate-900">
+<div class="flex flex-col items-center gap-6 px-8 py-12 w-full max-w-7xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50">
+<div class="font-['Public_Sans'] font-black text-primary dark:text-sky-100 text-2xl tracking-tighter">
+            VELFAC<span class="font-light text-secondary">DPP</span>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Sustainability Report</a>
+<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Technical Support</a>
+<a class="font-['Inter'] text-xs text-slate-500 hover:text-primary dark:hover:text-sky-300 transition-opacity duration-300" href="#">Privacy Policy</a>
+</div>
+<p class="font-['Inter'] text-xs text-slate-500 dark:text-slate-400 opacity-60">
+            © 2024 VELFAC Windows. Digital Product Passport. All technical values are certified under EN 14351-1.
+        </p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-slate-950 shadow-[0_-4px_20px_rgba(31,79,130,0.05)] border-t border-slate-100 dark:border-slate-800 z-50">
+<a class="flex flex-col items-center justify-center bg-sky-50 dark:bg-sky-900/40 text-primary dark:text-sky-100 rounded-xl px-3 py-1.5 active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="window" style="font-variation-settings: 'FILL' 1;">window</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Product</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Specs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Docs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 hover:text-primary active:translate-y-0.5 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Sustainability</span>
+</a>
+</nav>
+</body></html>

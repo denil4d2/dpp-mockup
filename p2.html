@@ -18,10 +18,10 @@
       --border-strong: #bcc9d2;
       --shadow-sm: 0 6px 20px rgba(18, 41, 61, 0.06);
       --shadow-md: 0 14px 34px rgba(18, 41, 61, 0.10);
-      --radius-lg: 24px;
+      --radius-lg: 28px;
       --radius-md: 18px;
       --radius-sm: 14px;
-      --maxw: 1120px;
+      --maxw: 1140px;
     }
 
     * {
@@ -43,10 +43,10 @@
 
     a,
     button,
-    details,
-    summary,
     .card,
-    .doc-btn {
+    .doc-btn,
+    .info-block,
+    .data-row {
       transition: all 0.2s ease;
     }
 
@@ -70,7 +70,7 @@
       font-weight: 700;
       font-size: 14px;
       background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(210, 219, 225, 0.9);
+      border: 1px solid rgba(210, 219, 225, 0.92);
       border-radius: 999px;
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow-sm);
@@ -79,16 +79,15 @@
     .top-nav:hover {
       color: var(--primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(18, 41, 61, 0.10);
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #163e63 0%, #245784 60%, #3a78aa 100%);
+      background: linear-gradient(135deg, #163e63 0%, #245784 58%, #3a78aa 100%);
       color: white;
-      border-radius: 28px;
-      padding: 28px 24px 24px;
+      border-radius: var(--radius-lg);
+      padding: 30px 24px 24px;
       box-shadow: var(--shadow-md);
       margin-bottom: 18px;
       isolation: isolate;
@@ -97,24 +96,24 @@
     .hero::before {
       content: "";
       position: absolute;
-      right: -52px;
-      top: -52px;
-      width: 230px;
-      height: 230px;
+      right: -60px;
+      top: -60px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.08);
       z-index: -1;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      right: 110px;
+      right: 120px;
       bottom: -70px;
-      width: 190px;
-      height: 190px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       z-index: -1;
     }
 
@@ -128,7 +127,7 @@
 
     .brand {
       font-size: 12px;
-      letter-spacing: 1.7px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       opacity: 0.84;
       margin-bottom: 10px;
@@ -143,37 +142,36 @@
 
     .hero p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(255,255,255,0.9);
       font-size: 15px;
-      line-height: 1.55;
-      max-width: 680px;
+      line-height: 1.6;
+      max-width: 720px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.20);
       padding: 11px 15px;
       border-radius: 999px;
       font-size: 13px;
       white-space: nowrap;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
     }
 
     .metrics {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 20px;
     }
 
     .metric {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
       border-radius: 16px;
-      padding: 14px 14px 12px;
+      padding: 14px;
       backdrop-filter: blur(4px);
     }
 
@@ -194,7 +192,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 18px;
       margin-bottom: 18px;
       align-items: start;
@@ -228,7 +226,7 @@
     .subtle {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     .meta-list {
@@ -341,89 +339,76 @@
       font-weight: 700;
     }
 
-    .preview-wrap {
+    .section-grid {
       display: grid;
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .preview-card {
+    .info-block {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      overflow: hidden;
+      padding: 22px;
     }
 
-    details {
-      width: 100%;
+    .info-block:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(18, 41, 61, 0.08);
     }
 
-    summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .info-block h3 {
+      margin: 0 0 14px;
+      font-size: 17px;
+      color: var(--primary-dark);
+    }
+
+    .data-table {
+      display: grid;
+      gap: 10px;
+    }
+
+    .data-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
       gap: 14px;
-      padding: 18px 20px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid #edf2f5;
+    }
+
+    .data-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .data-key {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .data-value {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #f5f9fc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-dark);
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .summary-text {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 0;
-    }
-
-    .summary-title {
-      font-size: 16px;
-      line-height: 1.25;
-    }
-
-    .summary-sub {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .summary-icon {
-      flex-shrink: 0;
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(22, 62, 99, 0.08);
-      color: var(--primary);
-      font-size: 18px;
-    }
-
-    details[open] summary {
-      border-bottom: 1px solid var(--border);
-      background: #fbfcfd;
-    }
-
-    .iframe-wrap {
-      padding: 16px;
-      background: #f7fafb;
-    }
-
-    iframe {
-      width: 100%;
-      height: 72vh;
-      min-height: 520px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: white;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
     }
 
     .footer-note {
@@ -434,22 +419,14 @@
       line-height: 1.5;
     }
 
-    @media (max-width: 920px) {
-      .layout {
+    @media (max-width: 980px) {
+      .layout,
+      .section-grid {
         grid-template-columns: 1fr;
       }
 
       .metrics {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      iframe {
-        height: 58vh;
-        min-height: 420px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -467,15 +444,13 @@
         font-size: 24px;
       }
 
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-
+      .metrics,
       .meta-list {
         grid-template-columns: 1fr;
       }
 
-      .card {
+      .card,
+      .info-block {
         padding: 16px;
       }
 
@@ -483,22 +458,14 @@
         padding: 16px;
       }
 
+      .data-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
       .top-nav {
         font-size: 13px;
         padding: 9px 12px;
-      }
-
-      summary {
-        padding: 16px;
-      }
-
-      .iframe-wrap {
-        padding: 12px;
-      }
-
-      iframe {
-        height: 46vh;
-        min-height: 320px;
       }
     }
   </style>
@@ -510,14 +477,16 @@
     <section class="hero">
       <div class="hero-top">
         <div>
-          <div class="brand">DPP Mockup · DOVISTA-inspired</div>
+          <div class="brand">Digital Product Passport · VELFAC</div>
           <h1>VELFAC Ribo alu 3-lags</h1>
           <p>
-            Digital Product Passport prototype with product-specific documentation, structured access,
-            and a more presentation-ready interface for QR-based product journeys.
+            A slim-profile aluminium-clad window solution designed for a clean architectural expression,
+            robust exterior durability, and high daylight performance. This product combines a refined
+            frame design with modern thermal performance and documented product information for easier
+            specification, review, and lifecycle communication.
           </p>
         </div>
-        <div class="tag">Public product documents</div>
+        <div class="tag">DoP + EPD available</div>
       </div>
 
       <div class="metrics">
@@ -526,12 +495,16 @@
           <div class="metric-value">VELFAC</div>
         </div>
         <div class="metric">
+          <div class="metric-label">Product line</div>
+          <div class="metric-value">Ribo Alu</div>
+        </div>
+        <div class="metric">
           <div class="metric-label">Configuration</div>
           <div class="metric-value">3-layer glazing</div>
         </div>
         <div class="metric">
-          <div class="metric-label">Passport status</div>
-          <div class="metric-value">Prototype</div>
+          <div class="metric-label">Document status</div>
+          <div class="metric-value">Available</div>
         </div>
       </div>
     </section>
@@ -539,7 +512,7 @@
     <section class="layout">
       <div class="stack">
         <div class="card">
-          <h2>Product information</h2>
+          <h2>Product summary</h2>
           <div class="meta-list">
             <div class="meta-item">
               <div class="meta-label">Brand</div>
@@ -550,104 +523,171 @@
               <div class="meta-value">Ribo Alu</div>
             </div>
             <div class="meta-item">
-              <div class="meta-label">Configuration</div>
-              <div class="meta-value">3-layer glazing</div>
+              <div class="meta-label">Construction</div>
+              <div class="meta-value">Aluminium-clad window system</div>
             </div>
             <div class="meta-item">
-              <div class="meta-label">Passport type</div>
-              <div class="meta-value">Prototype / Mockup</div>
+              <div class="meta-label">Glazing</div>
+              <div class="meta-value">3-layer glazing</div>
             </div>
           </div>
 
           <div class="status-row">
-            <div class="status-pill">DoP available</div>
-            <div class="status-pill">EPD available</div>
-            <div class="status-pill">QR-ready concept</div>
+            <div class="status-pill">Performance documented</div>
+            <div class="status-pill">Environmental data available</div>
+            <div class="status-pill">Downloadable source documents</div>
           </div>
         </div>
 
         <div class="card">
-          <h2>Overview</h2>
+          <h2>Product description</h2>
           <div class="subtle">
-            This concept page is designed to feel less like a plain document portal and more like a
-            product-facing digital identity. The emphasis is on product clarity, trust, and direct access
-            to compliance and sustainability documentation.
+            VELFAC Ribo Alu 3-lags is presented as a window solution intended for projects where a narrow
+            visual frame, durable external finish, and strong energy performance matter. The aluminium-clad
+            exterior supports weather resistance and lower maintenance on the outside, while the overall
+            configuration is positioned toward modern building envelopes that require improved thermal
+            performance through triple glazing.
+            <br><br>
+            This page is structured to surface the most relevant product information directly on the screen:
+            core identification, indicative performance data, environmental references, and access to the
+            full supporting documentation.
           </div>
         </div>
       </div>
 
       <div class="card">
-        <h2>Documents</h2>
+        <h2>Source documents</h2>
         <div class="doc-buttons">
-          <a class="doc-btn" href="./files/product2_dop.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="doc-btn" href="./files/product2_dop.pdf" target="_blank" rel="noopener noreferrer" download>
             <div class="doc-btn-main">
               <div class="doc-btn-title">Declaration of Performance</div>
               <div class="doc-btn-text">
-                Open the DoP document in a new tab for full-size viewing.
+                Download or open the full DoP document with detailed declared performance data.
               </div>
             </div>
-            <div class="doc-btn-arrow">→</div>
+            <div class="doc-btn-arrow">↓</div>
           </a>
 
-          <a class="doc-btn" href="./files/product2_epd.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="doc-btn" href="./files/product2_epd.pdf" target="_blank" rel="noopener noreferrer" download>
             <div class="doc-btn-main">
               <div class="doc-btn-title">Environmental Product Declaration</div>
               <div class="doc-btn-text">
-                Open the EPD document in a new tab for detailed review.
+                Download or open the full EPD document with environmental impact information.
               </div>
             </div>
-            <div class="doc-btn-arrow">→</div>
+            <div class="doc-btn-arrow">↓</div>
           </a>
+        </div>
+
+        <div class="highlight">Best setup: show key values here, keep PDFs as evidence files</div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="info-block">
+        <h3>Key product data</h3>
+        <div class="data-table">
+          <div class="data-row">
+            <div class="data-key">Product name</div>
+            <div class="data-value">VELFAC Ribo alu 3-lags</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Category</div>
+            <div class="data-value">Window</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Brand</div>
+            <div class="data-value">VELFAC</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Series</div>
+            <div class="data-value">Ribo Alu</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Configuration</div>
+            <div class="data-value">Triple glazed / 3-layer glazing</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Outer material</div>
+            <div class="data-value">Aluminium cladding</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Use case</div>
+            <div class="data-value">Residential and commercial façade applications where daylight, durability, and thermal performance are relevant.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Performance overview</h3>
+        <div class="data-table">
+          <div class="data-row">
+            <div class="data-key">Thermal concept</div>
+            <div class="data-value">3-layer glazing supports improved insulation compared with lower-glazed configurations.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Daylight profile</div>
+            <div class="data-value">Slim frame concept intended to support a cleaner glazed appearance and stronger daylight admission.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Maintenance</div>
+            <div class="data-value">Exterior aluminium finish supports durability and reduced exterior maintenance demands.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Documentation</div>
+            <div class="data-value">Detailed declared values should be confirmed in the downloadable DoP and EPD files.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Environmental information</h3>
+        <div class="data-table">
+          <div class="data-row">
+            <div class="data-key">EPD status</div>
+            <div class="data-value">Available</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Environmental scope</div>
+            <div class="data-value">Environmental impacts are documented in the Environmental Product Declaration linked above.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Use in DPP</div>
+            <div class="data-value">EPD information can support sustainability communication, project documentation, and product comparison workflows.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Recommended display</div>
+            <div class="data-value">Surface a few headline values here, then let users open the full EPD for the complete methodology and indicators.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3>Compliance & document references</h3>
+        <div class="data-table">
+          <div class="data-row">
+            <div class="data-key">DoP status</div>
+            <div class="data-value">Available</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Declared performance</div>
+            <div class="data-value">The Declaration of Performance should remain the formal source for certified or declared product performance values.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">User action</div>
+            <div class="data-value">Users can review this page for a quick overview, then download the source documents for formal evidence and full details.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Presentation logic</div>
+            <div class="data-value">On-page summary first. Formal PDF evidence second.</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="preview-wrap">
-      <div class="preview-card">
-        <details>
-          <summary>
-            <div class="summary-text">
-              <div class="summary-title">Declaration of Performance (DoP)</div>
-              <div class="summary-sub">Expand to preview the embedded PDF directly on the page.</div>
-            </div>
-            <div class="summary-icon">+</div>
-          </summary>
-          <div class="iframe-wrap">
-            <iframe src="./files/product2_dop.pdf" title="Declaration of Performance PDF"></iframe>
-          </div>
-        </details>
-      </div>
-
-      <div class="preview-card">
-        <details>
-          <summary>
-            <div class="summary-text">
-              <div class="summary-title">Environmental Product Declaration (EPD)</div>
-              <div class="summary-sub">Expand to preview the embedded PDF directly on the page.</div>
-            </div>
-            <div class="summary-icon">+</div>
-          </summary>
-          <div class="iframe-wrap">
-            <iframe src="./files/product2_epd.pdf" title="Environmental Product Declaration PDF"></iframe>
-          </div>
-        </details>
-      </div>
-    </section>
-
     <div class="footer-note">
-      DPP concept prototype for QR-based document access and product-facing presentation.
+      Replace the summary values above with the exact figures and wording from your real DoP and EPD when you are ready.
     </div>
   </div>
-
-  <script>
-    document.querySelectorAll("details").forEach((detail) => {
-      const icon = detail.querySelector(".summary-icon");
-      const sync = () => {
-        icon.textContent = detail.open ? "–" : "+";
-      };
-      detail.addEventListener("toggle", sync);
-      sync();
-    });
-  </script>
 </body>
 </html>

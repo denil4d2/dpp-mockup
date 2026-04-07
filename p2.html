@@ -1,340 +1,470 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Digital Product Passport | VELFAC Ribo alu 3-lags</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "secondary-fixed-dim": "#afcbd8",
-              "on-secondary-container": "#4e6874",
-              "secondary-container": "#cbe7f5",
-              "secondary": "#48626e",
-              "on-tertiary-fixed-variant": "#004f56",
-              "outline": "#737780",
-              "on-primary-fixed-variant": "#15487b",
-              "surface-variant": "#c9e7f7",
-              "on-tertiary-fixed": "#001f23",
-              "tertiary-container": "#00565e",
-              "tertiary": "#003d43",
-              "primary-container": "#1f4f82",
-              "on-error": "#ffffff",
-              "on-tertiary": "#ffffff",
-              "on-primary-container": "#97c1fb",
-              "on-background": "#001f2a",
-              "surface-container": "#d9f2ff",
-              "on-tertiary-container": "#6ccdda",
-              "primary-fixed": "#d3e4ff",
-              "error": "#ba1a1a",
-              "on-secondary-fixed": "#021f29",
-              "outline-variant": "#c2c6d0",
-              "surface-container-low": "#e6f6ff",
-              "surface-container-highest": "#c9e7f7",
-              "on-secondary": "#ffffff",
-              "error-container": "#ffdad6",
-              "inverse-on-surface": "#e0f4ff",
-              "surface-bright": "#f4faff",
-              "primary-fixed-dim": "#a2c9ff",
-              "inverse-surface": "#163440",
-              "tertiary-fixed-dim": "#75d5e2",
-              "surface-container-high": "#ceedfd",
-              "on-secondary-fixed-variant": "#304a55",
-              "on-error-container": "#93000a",
-              "surface-tint": "#336094",
-              "surface": "#f4faff",
-              "on-primary-fixed": "#001c38",
-              "on-surface-variant": "#42474f",
-              "primary": "#003866",
-              "inverse-primary": "#a2c9ff",
-              "tertiary-fixed": "#92f1fe",
-              "surface-dim": "#c0dfee",
-              "secondary-fixed": "#cbe7f5",
-              "surface-container-lowest": "#ffffff",
-              "background": "#f4faff",
-              "on-surface": "#001f2a",
-              "on-primary": "#ffffff"
-            },
-            fontFamily: {
-              "headline": ["Public Sans"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DoPC Product Record | Rationel AURAPLUS Top-Guided Window, Triple-Glazed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: '#f4faff',
+            surface: '#ffffff',
+            surface2: '#e6f6ff',
+            surface3: '#ceedfd',
+            ink: '#001f2a',
+            muted: '#4e6874',
+            line: '#c2c6d0',
+            primary: '#003866',
+            primary2: '#1f4f82',
+            accent: '#00565e',
+            accent2: '#92f1fe'
           },
-        },
+          fontFamily: {
+            headline: ['Public Sans', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(0,31,42,0.08)'
+          }
+        }
       }
-    </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .glass-header {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    html { scroll-behavior: smooth; }
+    body { min-height: 100dvh; }
+    .glass-header {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
   </style>
-  </head>
-<body class="bg-background text-on-background font-body min-h-screen pb-32">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#f4faff] dark:bg-[#001f2a] opacity-90 glass-header shadow-[0_12px_40px_rgba(0,31,42,0.08)]">
-<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-[#003866] dark:text-[#e6f6ff]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
-<span class="text-lg font-black text-[#003866] dark:text-[#e6f6ff] font-headline tracking-tight">Digital Product Passport</span>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-[#001f2a] dark:text-[#c0dfee] opacity-70 hover:bg-[#e6f6ff] dark:hover:bg-[#1f4f82] transition-colors p-2 rounded-xl active:scale-95 transition-transform" data-icon="qr_code_2">qr_code_2</button>
-<button class="material-symbols-outlined text-[#001f2a] dark:text-[#c0dfee] opacity-70 hover:bg-[#e6f6ff] dark:hover:bg-[#1f4f82] transition-colors p-2 rounded-xl active:scale-95 transition-transform" data-icon="share">share</button>
-</div>
-</div>
-<div class="bg-[#c0dfee] dark:bg-[#003866] h-[1px] opacity-15"></div>
-</header>
-<main class="pt-24 px-6 max-w-7xl mx-auto">
-<!-- Hero Section: Identity -->
-<section class="mb-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-<div class="lg:col-span-8">
-<div class="flex items-center gap-2 mb-4">
-<span class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Official Document</span>
-<span class="text-on-surface-variant text-sm font-medium">Updated: ESPR 2024/3110</span>
-</div>
-<h1 class="text-primary font-headline font-extrabold text-5xl lg:text-7xl tracking-tighter mb-4">VELFAC Ribo alu 3-lags</h1>
-<div class="flex flex-wrap gap-4 items-center">
-<div class="bg-surface-container-low px-4 py-2 rounded-xl">
-<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">Passport Identifier</p>
-<p class="font-mono text-primary font-bold">EU-DPP-1234-5678-VEL</p>
-</div>
-<div class="bg-surface-container-low px-4 py-2 rounded-xl">
-<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">GTIN / EAN</p>
-<p class="font-mono text-primary font-bold">5700001234567</p>
-</div>
-<div class="bg-surface-container-low px-4 py-2 rounded-xl">
-<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-1">Batch ID</p>
-<p class="font-mono text-primary font-bold">DK-2024-V08</p>
-</div>
-</div>
-</div>
-<div class="lg:col-span-4 hidden lg:block">
-<div class="aspect-video bg-surface-container-highest rounded-2xl overflow-hidden relative shadow-lg">
-<img alt="Premium modern window frame" class="object-cover w-full h-full" data-alt="Close-up of a high-end architectural window frame with clean lines, metallic finish, and triple-pane glass showing soft light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd3kds5xOl4DelbyQmIf7f322ECcYGQxpYpA5VmVT1Iy-4uOtwB1PC64z15kIm1vmzTRMtjDPJYB6ARqMGsKwSee5N7YW5T5pO0v6Acnn6FKgx3ettSOLS8ZuiHgJrrKZ4dRB31IsliRcWeN5sqlcYC2CA0E7KsS79d0ULNma47QFQ9CY2mpK24Ie1Ccf8gz6xyGztvKA2w5M-p39LiK6VwLR7d0ncw3si2XKEeik9f4GSltXI5ISg2jRFQTlvigdehwZ-j0KmPxr_"/>
-<div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-primary">Ribo Series</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Grid: Compliance & Performance -->
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-<!-- Regulatory Compliance -->
-<div class="md:col-span-2 lg:col-span-2 bg-surface-container-low rounded-3xl p-8 relative overflow-hidden">
-<div class="flex justify-between items-start mb-12">
-<div>
-<h2 class="font-headline font-bold text-2xl text-primary mb-2">Regulatory Framework</h2>
-<p class="text-on-surface-variant text-sm">EU 2024/3110 Ecodesign for Sustainable Products</p>
-</div>
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="gavel">gavel</span>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
-<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="text-sm font-bold text-on-surface">REACH Compliant</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
-<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="text-sm font-bold text-on-surface">RoHS Status: Pass</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
-<span class="material-symbols-outlined text-tertiary" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
-<span class="text-sm font-bold text-on-surface">CE Certified</span>
-</div>
-<div class="flex items-center gap-3 p-4 bg-surface-container-lowest rounded-2xl border border-primary/5">
-<span class="material-symbols-outlined text-tertiary" data-icon="eco" data-weight="fill" style="font-variation-settings: 'FILL' 1;">eco</span>
-<span class="text-sm font-bold text-on-surface">EPD Verified</span>
-</div>
-</div>
-</div>
-<!-- Environmental Performance Card -->
-<div class="md:col-span-1 lg:col-span-1 bg-primary text-on-primary rounded-3xl p-8 flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined mb-6 text-4xl" data-icon="carbon">co2</span>
-<h3 class="font-headline font-bold text-xl mb-1">Carbon Footprint</h3>
-<p class="text-primary-fixed/70 text-xs mb-6">Global Warming Potential (GWP)</p>
-</div>
-<div>
-<div class="text-5xl font-black font-headline tracking-tighter mb-2">24.8</div>
-<div class="text-sm font-bold opacity-80 uppercase tracking-widest">kg CO2e / m²</div>
-</div>
-<div class="mt-6 pt-6 border-t border-white/10">
-<div class="flex justify-between items-center">
-<span class="text-xs uppercase tracking-widest font-bold">Energy Class</span>
-<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-lg text-lg font-black">A+++</span>
-</div>
-</div>
-</div>
-<!-- Circularity Card -->
-<div class="md:col-span-3 lg:col-span-1 bg-surface-container-high rounded-3xl p-8 flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined mb-6 text-4xl text-primary" data-icon="recycling">recycling</span>
-<h3 class="font-headline font-bold text-xl text-primary mb-1">Circular Economy</h3>
-<p class="text-on-surface-variant text-xs mb-6">End-of-life Performance</p>
-</div>
-<div class="space-y-4">
-<div class="flex justify-between items-end">
-<span class="text-on-surface font-bold">Recycling Rate</span>
-<span class="text-3xl font-black text-primary">94%</span>
-</div>
-<div class="w-full bg-surface-container rounded-full h-2">
-<div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
-</div>
-<div class="flex justify-between items-center pt-4">
-<span class="text-xs font-bold text-on-surface-variant">Design Life</span>
-<span class="text-on-surface font-black">45+ Years</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Detailed Specifications Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
-<!-- Technical Specs Table (Asymmetric 66%) -->
-<div class="lg:col-span-8 bg-surface-container-lowest rounded-3xl p-10">
-<div class="flex items-center gap-4 mb-10">
-<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center">
-<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
-</div>
-<h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Technical Performance</h2>
-</div>
-<div class="space-y-6">
-<div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
-<div class="mb-2 md:mb-0">
-<h4 class="text-on-surface font-bold text-lg">Thermal Transmittance (U-value)</h4>
-<p class="text-on-surface-variant text-xs">Standard unit measurement for thermal efficiency</p>
-</div>
-<div class="text-2xl font-black text-primary font-headline">0.74 <span class="text-xs font-medium">W/m²K</span></div>
-</div>
-<div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
-<div class="mb-2 md:mb-0">
-<h4 class="text-on-surface font-bold text-lg">Solar Heat Gain (G-value)</h4>
-<p class="text-on-surface-variant text-xs">Fraction of solar radiation admitted through window</p>
-</div>
-<div class="text-2xl font-black text-primary font-headline">0.53 <span class="text-xs font-medium">EN 410</span></div>
-</div>
-<div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-outline-variant/15">
-<div class="mb-2 md:mb-0">
-<h4 class="text-on-surface font-bold text-lg">Acoustic Insulation</h4>
-<p class="text-on-surface-variant text-xs">Sound reduction performance</p>
-</div>
-<div class="text-2xl font-black text-primary font-headline">34 <span class="text-xs font-medium">dB (Rw)</span></div>
-</div>
-<div class="flex flex-col md:flex-row md:items-center justify-between py-4">
-<div class="mb-2 md:mb-0">
-<h4 class="text-on-surface font-bold text-lg">Air Permeability</h4>
-<p class="text-on-surface-variant text-xs">Resistance to air leakage</p>
-</div>
-<div class="text-2xl font-black text-primary font-headline">Class 4 <span class="text-xs font-medium">EN 12207</span></div>
-</div>
-</div>
-</div>
-<!-- Quick Action Documents (33%) -->
-<div class="lg:col-span-4 space-y-6">
-<div class="bg-surface-container-low rounded-3xl p-8">
-<h3 class="font-headline font-bold text-xl text-primary mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined" data-icon="description">description</span>
-                        Documentation
-                    </h3>
-<div class="flex flex-col gap-3">
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary/60" data-icon="picture_as_pdf">picture_as_pdf</span>
-<span class="text-sm font-bold text-on-surface">Declaration of Performance</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</button>
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary/60" data-icon="eco">eco</span>
-<span class="text-sm font-bold text-on-surface">EPD Document (v2.1)</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</button>
-<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-white transition-colors group">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary/60" data-icon="menu_book">menu_book</span>
-<span class="text-sm font-bold text-on-surface">Installation Manual</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</button>
-</div>
-</div>
-<div class="bg-[#1f4f82] text-white rounded-3xl p-8 shadow-[0_20px_40px_rgba(31,79,130,0.25)]">
-<h3 class="font-headline font-bold text-xl mb-4">Sustainability Alert</h3>
-<p class="text-primary-fixed/80 text-sm mb-6 leading-relaxed">This product exceeds EU 2024/3110 sustainability thresholds by 12.5%. Eligible for green building certifications (LEED/BREEAM).</p>
-<button class="w-full py-4 bg-white text-primary font-bold rounded-xl hover:bg-primary-fixed transition-colors active:scale-95 duration-200">View Life Cycle Analysis</button>
-</div>
-</div>
-</div>
-<!-- End of Life Section -->
-<section class="bg-surface-dim/40 rounded-3xl p-10 mb-12 border-l-8 border-tertiary">
-<div class="flex flex-col md:flex-row gap-8 items-center">
-<div class="w-20 h-20 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-tertiary-fixed text-4xl" data-icon="restore_from_trash">restore_from_trash</span>
-</div>
-<div>
-<h2 class="font-headline font-bold text-2xl text-primary mb-2">Circular Disassembly Instructions</h2>
-<p class="text-on-surface-variant leading-relaxed mb-4 max-w-3xl">This window is engineered for mechanical disassembly. Components (Glass, Aluminum, Timber) can be separated using standard T10/T15 tools without destructive force, ensuring a 94% material recovery rate at end-of-life.</p>
-<div class="flex gap-4">
-<button class="text-primary font-bold text-sm underline-offset-4 hover:underline flex items-center gap-1">
-                            Download Disassembly Guide
-                            <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
-</button>
-<button class="text-primary font-bold text-sm underline-offset-4 hover:underline flex items-center gap-1">
-                            Locate Recycling Center
-                            <span class="material-symbols-outlined text-sm" data-icon="map">map</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full bg-[#ffffff] dark:bg-[#001f2a] shadow-[0_-4px_20px_rgba(0,31,42,0.05)] border-t border-[#c0dfee]/20 z-50">
-<div class="max-w-7xl mx-auto flex justify-around items-center px-4 pb-6 pt-3">
-<a class="flex flex-col items-center justify-center text-[#003866] dark:text-[#92f1fe] bg-[#e6f6ff] dark:bg-[#1f4f82] rounded-xl px-4 py-2 transition-all active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="window" data-weight="fill" style="font-variation-settings: 'FILL' 1;">window</span>
-<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Product</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="gavel">gavel</span>
-<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Compliance</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
-<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Documents</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#001f2a] dark:text-[#c0dfee] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="recycling">recycling</span>
-<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Circular</span>
-</a>
-</div>
-</nav>
-<!-- FAB (Suppressed on this detailed view per rules, but showing structural capability if needed) -->
-<!-- <button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-xl flex items-center justify-center">
-        <span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
-    </button> -->
-</body></html>
+</head>
+<body class="bg-background text-ink font-body min-h-screen pb-24">
+  <header class="fixed top-0 w-full z-50 bg-background/90 glass-header shadow-soft">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">verified</span>
+        <div>
+          <div class="font-headline font-black tracking-tight text-primary text-lg">DoPC Product Record</div>
+          <div class="text-xs text-muted">CPR-aligned digital presentation of signed source documents</div>
+        </div>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 text-sm">
+        <a href="#product" class="px-3 py-2 rounded-xl hover:bg-surface2">Product</a>
+        <a href="#compliance" class="px-3 py-2 rounded-xl hover:bg-surface2">Compliance</a>
+        <a href="#environment" class="px-3 py-2 rounded-xl hover:bg-surface2">Environment</a>
+        <a href="#documents" class="px-3 py-2 rounded-xl hover:bg-surface2">Documents</a>
+      </div>
+    </div>
+    <div class="h-px bg-primary/10"></div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 pt-24">
+    <section id="product" class="py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="lg:col-span-8">
+          <div class="flex flex-wrap items-center gap-3 mb-5">
+            <span class="px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em]">Rationel</span>
+            <span class="px-3 py-1 rounded-full bg-surface2 text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Triple-glazed</span>
+            <span class="px-3 py-1 rounded-full bg-surface2 text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Top-guided window</span>
+          </div>
+          <h1 class="font-headline font-extrabold text-5xl lg:text-7xl tracking-tight text-primary leading-none mb-5">Rationel AURAPLUS</h1>
+          <p class="text-lg lg:text-xl text-muted max-w-4xl leading-relaxed mb-6">
+            Wood/aluminium top-guided outward-opening window with triple glazing. This page is structured as a digital DoPC-style product record aligned to the revised Construction Products Regulation, using the signed DoP and the verified EPD as the governing source documents.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="bg-surface rounded-3xl border border-primary/5 p-5">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-muted mb-1">DoP number</div>
+              <div class="font-mono text-primary font-bold">W-EW-20250201</div>
+            </div>
+            <div class="bg-surface rounded-3xl border border-primary/5 p-5">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-muted mb-1">Product family</div>
+              <div class="font-semibold text-ink">AURAPLUS, 3-lags rude</div>
+            </div>
+            <div class="bg-surface rounded-3xl border border-primary/5 p-5">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-muted mb-1">Opening function</div>
+              <div class="font-semibold text-ink">TGO — topstyret vindue</div>
+            </div>
+            <div class="bg-surface rounded-3xl border border-primary/5 p-5">
+              <div class="text-[10px] uppercase tracking-[0.18em] font-bold text-muted mb-1">EPD registration</div>
+              <div class="font-mono text-primary font-bold">S-P-07597</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4">
+          <div class="h-full rounded-[28px] overflow-hidden shadow-soft bg-gradient-to-br from-surface3 to-surface">
+            <div class="p-6 border-b border-primary/10 flex items-center justify-between">
+              <div>
+                <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted">Digital product card</div>
+                <div class="text-xl font-headline font-bold text-primary">Top-guided triple-glazed window</div>
+              </div>
+              <span class="material-symbols-outlined text-primary text-3xl">window</span>
+            </div>
+            <div class="p-6">
+              <div class="aspect-[4/3] rounded-3xl bg-primary/5 border border-primary/10 flex items-center justify-center overflow-hidden">
+                <svg viewBox="0 0 420 320" class="w-full h-full">
+                  <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#d9f2ff" />
+                      <stop offset="100%" stop-color="#afcbd8" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="420" height="320" fill="url(#g1)"/>
+                  <rect x="78" y="44" width="264" height="232" rx="10" fill="#f7fbff" stroke="#003866" stroke-width="10"/>
+                  <rect x="108" y="70" width="204" height="180" rx="6" fill="#d8eefb" stroke="#1f4f82" stroke-width="6"/>
+                  <line x1="210" y1="70" x2="210" y2="250" stroke="#1f4f82" stroke-width="4"/>
+                  <line x1="108" y1="160" x2="312" y2="160" stroke="#1f4f82" stroke-width="4" opacity="0.55"/>
+                  <circle cx="292" cy="160" r="6" fill="#003866"/>
+                  <text x="210" y="292" text-anchor="middle" fill="#003866" font-size="18" font-family="Inter, sans-serif" font-weight="700">AURAPLUS · TGO · 3-layer</text>
+                </svg>
+              </div>
+              <div class="grid grid-cols-2 gap-3 mt-4 text-sm">
+                <div class="rounded-2xl bg-white/80 p-4 border border-primary/5">
+                  <div class="text-muted text-xs uppercase tracking-wider font-bold mb-1">Tested size</div>
+                  <div class="font-semibold">1,800 × 1,400 mm</div>
+                </div>
+                <div class="rounded-2xl bg-white/80 p-4 border border-primary/5">
+                  <div class="text-muted text-xs uppercase tracking-wider font-bold mb-1">Intended use</div>
+                  <div class="font-semibold">Residential & commercial</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="rounded-[28px] bg-primary text-white p-7 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined text-4xl mb-5">thermostat</span>
+          <div class="font-headline font-bold text-xl">Thermal transmittance</div>
+          <div class="text-white/70 text-xs uppercase tracking-[0.18em] mt-1">DoP 4.12</div>
+        </div>
+        <div class="mt-8">
+          <div class="text-5xl font-headline font-black tracking-tight">0,77</div>
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-white/80">W/m²K</div>
+        </div>
+      </div>
+
+      <div class="rounded-[28px] bg-surface p-7 border border-primary/5 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined text-primary text-4xl mb-5">wb_sunny</span>
+          <div class="font-headline font-bold text-xl text-primary">Solar properties</div>
+          <div class="text-muted text-xs uppercase tracking-[0.18em] mt-1">DoP 4.13</div>
+        </div>
+        <div class="mt-8">
+          <div class="text-4xl font-headline font-black tracking-tight text-primary">g 0,53</div>
+          <div class="text-sm font-semibold text-muted">LT 0,74</div>
+        </div>
+      </div>
+
+      <div class="rounded-[28px] bg-surface p-7 border border-primary/5 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined text-primary text-4xl mb-5">air</span>
+          <div class="font-headline font-bold text-xl text-primary">Air permeability</div>
+          <div class="text-muted text-xs uppercase tracking-[0.18em] mt-1">DoP 4.14</div>
+        </div>
+        <div class="mt-8">
+          <div class="text-4xl font-headline font-black tracking-tight text-primary">Class 4</div>
+          <div class="text-sm font-semibold text-muted">±600 Pa</div>
+        </div>
+      </div>
+
+      <div class="rounded-[28px] bg-surface p-7 border border-primary/5 flex flex-col justify-between">
+        <div>
+          <span class="material-symbols-outlined text-primary text-4xl mb-5">co2</span>
+          <div class="font-headline font-bold text-xl text-primary">GWP-total</div>
+          <div class="text-muted text-xs uppercase tracking-[0.18em] mt-1">EPD A1–A3 per 1 m²</div>
+        </div>
+        <div class="mt-8">
+          <div class="text-4xl font-headline font-black tracking-tight text-primary">40,1</div>
+          <div class="text-sm font-semibold text-muted">kg CO₂e</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compliance" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-7 rounded-[30px] bg-surface2 p-8">
+        <div class="flex items-start justify-between gap-4 mb-8">
+          <div>
+            <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Regulatory and conformity basis</h2>
+            <p class="text-muted mt-2 max-w-3xl">Presented as a CPR-style DoPC record. The signed DoP remains the legal performance declaration. The EPD remains the verified environmental declaration.</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">gavel</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Harmonised standard</div>
+            <div class="font-semibold text-ink">EN 14351-1:2006 +A2:2016</div>
+          </div>
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">AVCP system</div>
+            <div class="font-semibold text-ink">System 3</div>
+          </div>
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Manufacturer</div>
+            <div class="font-semibold text-ink">DOVISTA A/S</div>
+            <div class="text-sm text-muted mt-1">Bygholm Søpark 21D, 8700 Horsens, Denmark</div>
+          </div>
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Intended use</div>
+            <div class="font-semibold text-ink">Residential and commercial buildings</div>
+          </div>
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Notified body — product testing</div>
+            <div class="font-semibold text-ink">NB 1235 · Danish Technological Institute</div>
+          </div>
+          <div class="bg-white rounded-3xl p-5 border border-primary/5">
+            <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Notified body — acoustic testing</div>
+            <div class="font-semibold text-ink">NB 0402 · RISE Research Institutes of Sweden</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 rounded-[30px] bg-surface p-8 border border-primary/5">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Technical performance</h2>
+            <p class="text-muted mt-2">Values below are for TGO, the top-guided window in the Rationel AURAPLUS 3-layer DoP.</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">settings_input_component</span>
+        </div>
+        <div class="space-y-5">
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-primary/10">
+            <div>
+              <div class="font-semibold text-ink">Resistance to wind load</div>
+              <div class="text-sm text-muted">EN 12210:2016 / EN 12211:2016</div>
+            </div>
+            <div class="text-right font-headline font-black text-2xl text-primary">Class C4 <span class="text-sm font-semibold text-muted">1,600 Pa</span></div>
+          </div>
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-primary/10">
+            <div>
+              <div class="font-semibold text-ink">Water tightness</div>
+              <div class="text-sm text-muted">EN 12208:2016 / EN 1027:2016</div>
+            </div>
+            <div class="text-right font-headline font-black text-2xl text-primary">Class 9A <span class="text-sm font-semibold text-muted">600 Pa</span></div>
+          </div>
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-primary/10">
+            <div>
+              <div class="font-semibold text-ink">Load-bearing capacity of safety devices</div>
+              <div class="text-sm text-muted">EN 14609:2003</div>
+            </div>
+            <div class="text-right font-headline font-black text-2xl text-primary">350 N / 60 s <span class="text-sm font-semibold text-muted">optional</span></div>
+          </div>
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-primary/10">
+            <div>
+              <div class="font-semibold text-ink">Acoustic performance</div>
+              <div class="text-sm text-muted">Depends on glazing build-up</div>
+            </div>
+            <div class="text-right font-headline font-black text-2xl text-primary">Rw 33–44 dB</div>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <div class="font-semibold text-ink">Dangerous substances</div>
+              <div class="text-sm text-muted">DoP 4.6</div>
+            </div>
+            <div class="text-right font-headline font-black text-2xl text-primary">None</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="environment" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-8 rounded-[30px] bg-surface p-8 border border-primary/5">
+        <div class="flex items-start justify-between gap-4 mb-8">
+          <div>
+            <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Environmental declaration snapshot</h2>
+            <p class="text-muted mt-2">Declared unit: 1 m² window. System boundary: A1–A3 + A5 + C1–C4 + D.</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">eco</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="text-left border-b border-primary/10">
+                <th class="py-3 pr-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">Indicator</th>
+                <th class="py-3 px-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">A1–A3</th>
+                <th class="py-3 px-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">A5</th>
+                <th class="py-3 px-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">C2</th>
+                <th class="py-3 px-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">C3</th>
+                <th class="py-3 px-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">C4</th>
+                <th class="py-3 pl-4 font-bold text-muted uppercase tracking-[0.18em] text-xs">D</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-primary/5">
+                <td class="py-4 pr-4 font-semibold">GWP-total [kg CO₂e]</td>
+                <td class="py-4 px-4">40,1</td>
+                <td class="py-4 px-4">3,42</td>
+                <td class="py-4 px-4">0,587</td>
+                <td class="py-4 px-4">24,0</td>
+                <td class="py-4 px-4">1,31</td>
+                <td class="py-4 pl-4">−22,9</td>
+              </tr>
+              <tr class="border-b border-primary/5">
+                <td class="py-4 pr-4 font-semibold">GWP-GHG [kg CO₂e]</td>
+                <td class="py-4 px-4">65,9</td>
+                <td class="py-4 px-4">0,028</td>
+                <td class="py-4 px-4">0,580</td>
+                <td class="py-4 px-4">0,275</td>
+                <td class="py-4 px-4">0,070</td>
+                <td class="py-4 pl-4">−24,8</td>
+              </tr>
+              <tr class="border-b border-primary/5">
+                <td class="py-4 pr-4 font-semibold">PERE [MJ]</td>
+                <td class="py-4 px-4">664</td>
+                <td class="py-4 px-4">0,006</td>
+                <td class="py-4 px-4">0,125</td>
+                <td class="py-4 px-4">0,141</td>
+                <td class="py-4 px-4">0,047</td>
+                <td class="py-4 pl-4">55,1</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-semibold">PENRE [MJ]</td>
+                <td class="py-4 px-4">1,080</td>
+                <td class="py-4 px-4">0,477</td>
+                <td class="py-4 px-4">9,39</td>
+                <td class="py-4 px-4">2,05</td>
+                <td class="py-4 px-4">2,47</td>
+                <td class="py-4 pl-4">−345</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 space-y-6">
+        <div class="rounded-[30px] bg-primary text-white p-8">
+          <div class="font-headline font-bold text-2xl mb-2">EPD scope</div>
+          <p class="text-white/80 text-sm leading-relaxed">Verified in The International EPD System under EN 15804 and c-PCR-007 for windows and doors. Publication date 2023-02-10, revision date 2023-09-13, valid until 2028-02-10.</p>
+        </div>
+
+        <div class="rounded-[30px] bg-surface2 p-8">
+          <div class="font-headline font-bold text-2xl text-primary mb-4">Content information</div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between gap-4"><span>Insulated glass unit</span><strong>22,07 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>Wood</span><strong>10,13 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>Steel & metals</span><strong>1,48 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>Aluminium</span><strong>1,52 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>Paint</span><strong>1,15 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>EPDM</span><strong>0,36 kg</strong></div>
+            <div class="flex justify-between gap-4"><span>Sealant and glue</span><strong>0,08 kg</strong></div>
+            <div class="pt-3 mt-3 border-t border-primary/10 flex justify-between gap-4 font-semibold"><span>Total product mass</span><strong>36,80 kg</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-5 rounded-[30px] bg-surface2 p-8">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">End-of-life assumptions</h2>
+            <p class="text-muted mt-2">Scenario values stated in the EPD for modules C and D.</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">recycling</span>
+        </div>
+        <div class="space-y-4 text-sm leading-relaxed">
+          <div class="bg-white rounded-2xl p-4 border border-primary/5"><strong>Glass cassette:</strong> 70% assumed to landfill treatment and 30% to material recycling after collection and sorting.</div>
+          <div class="bg-white rounded-2xl p-4 border border-primary/5"><strong>Aluminium, steel and zinc:</strong> 95% assumed to treatment and sorting for recycling, 5% to landfill.</div>
+          <div class="bg-white rounded-2xl p-4 border border-primary/5"><strong>Wood frame:</strong> 95% assumed to treatment, 5% to landfill.</div>
+          <div class="bg-white rounded-2xl p-4 border border-primary/5"><strong>Transport:</strong> the EPD assumes 50 km from demolition site to municipal waste collection and sorting station, with EURO V trucks for A2 and C2.</div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 rounded-[30px] bg-surface p-8 border border-primary/5">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">DoPC implementation notes</h2>
+            <p class="text-muted mt-2">This front-end is aligned to a digital DoPC logic, but it does not invent identifiers or values that are not present in the source declarations.</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-4xl">fact_check</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 text-sm leading-relaxed">
+          <div class="rounded-2xl bg-surface2 p-5">
+            <div class="font-semibold text-primary mb-2">What is sourced directly</div>
+            <p>Product family, opening function, DoP number, harmonised standard, intended use, notified bodies, declared performance values, EPD registration, content information, and environmental indicators.</p>
+          </div>
+          <div class="rounded-2xl bg-surface2 p-5">
+            <div class="font-semibold text-primary mb-2">What is intentionally left open</div>
+            <p>GTIN, unique digital product identifier, order-specific configuration code, size-specific commercial metadata, and any market-specific conformity fields not present in the attached source files.</p>
+          </div>
+          <div class="rounded-2xl bg-surface2 p-5 md:col-span-2">
+            <div class="font-semibold text-primary mb-2">Recommended next step</div>
+            <p>Bind this page to a real product identifier from the ERP / order object, then expose a variant-level DoPC record where the order-specific U-value, glazing build-up, acoustic selection, and linked source documents are resolved dynamically from governed master data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="documents" class="rounded-[32px] bg-surface p-8 border border-primary/5 mb-12">
+      <div class="flex items-start justify-between gap-4 mb-8">
+        <div>
+          <h2 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Source documents</h2>
+          <p class="text-muted mt-2">These PDFs remain the authoritative documents behind this digital representation.</p>
+        </div>
+        <span class="material-symbols-outlined text-primary text-4xl">description</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <a href="W-EW20250201_DK_signed.pdf" class="group rounded-3xl bg-surface2 p-6 hover:bg-surface3 transition-colors border border-primary/5">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Declaration of Performance</div>
+              <div class="font-headline font-bold text-2xl text-primary">Rationel AURAPLUS · 3-lags rude</div>
+              <div class="text-sm text-muted mt-2">DoP no. W-EW-20250201</div>
+            </div>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+        <a href="EPD-S-P-07597_AURAPLUS_FORMAPLUS-Top-guided-Rationel_2023_09_14_v5.pdf" class="group rounded-3xl bg-surface2 p-6 hover:bg-surface3 transition-colors border border-primary/5">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-[0.18em] font-bold text-muted mb-2">Environmental Product Declaration</div>
+              <div class="font-headline font-bold text-2xl text-primary">AURAPLUS / FORMAPLUS — top-guided window</div>
+              <div class="text-sm text-muted mt-2">EPD registration S-P-07597</div>
+            </div>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur border-t border-primary/10 z-50">
+    <div class="max-w-7xl mx-auto flex justify-around items-center px-4 py-3 text-xs uppercase tracking-[0.18em]">
+      <a href="#product" class="flex flex-col items-center gap-1 text-primary font-bold">
+        <span class="material-symbols-outlined">window</span>
+        <span>Product</span>
+      </a>
+      <a href="#compliance" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">gavel</span>
+        <span>Compliance</span>
+      </a>
+      <a href="#environment" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">eco</span>
+        <span>Environment</span>
+      </a>
+      <a href="#documents" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">description</span>
+        <span>Documents</span>
+      </a>
+    </div>
+  </nav>
+</body>
+</html>
